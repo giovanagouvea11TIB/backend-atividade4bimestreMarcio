@@ -6,20 +6,21 @@ import {persons} from "./persons.js"
 const app = express()
 const port = 3333
 
-/*
-Maneiras de acessar infos (rotas)
----------------------------------
-GET - transita infos back e frontend, nao guarda nenhuma nem envia;
-POST - guarda info que provavelmente vai pro banco de dados;
-
-----------ha tambem esses--------
-PATCH, PUT ,DELETE
-*/
-
 app.use(cors())
+app.use (express.json())
 
 app.get("/", (request, response) => {
     response.json (persons)
+})
+
+app.post("/cadastrar", (request, response) => {
+    //desestruturacao
+    const { user } = request.body
+    console.log(user)
+
+    //cadastro no banco de dados 
+
+    response.status(201).json({message: "Usuario cadastrado com sucesso!"})
 })
 
 app.listen(port, ()=> {
