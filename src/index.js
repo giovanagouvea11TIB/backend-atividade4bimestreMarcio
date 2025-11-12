@@ -1,7 +1,6 @@
 import express from "express"
 import cors from "cors"
 import mysql2 from "mysql2"
-import {persons} from "./persons.js"
 
 const { DB_HOST, DB_DATABASE, DB_USER, DB_PASSWORD } = process.env;
 
@@ -23,7 +22,16 @@ app.use(cors())
 app.use (express.json())
 
 app.get("/", (request, response) => {
-    response.json (persons)
+    const selectCommand = "SELECT name, email FROM giovanagouvea_02mb"
+
+    database.query(selectCommand, (error, users) =>{
+        if (error) {
+            console.log (error)
+            return
+        }
+
+        response.json(users)
+    })
 })
 
 app.post("/cadastrar", (request, response) => {
@@ -33,14 +41,15 @@ app.post("/cadastrar", (request, response) => {
 
     //cadastro no banco de dados 
     const insertCommand = `
-    INSERT INTO giovanagouvea_02mb (name, email, passaword)
+    INSERT INTO giovanagouvea_02mb (name, email, password)
     VALUES (?, ?, ?)
     `
-    database.query (insertCommand, [user.name, user.email, user.passaword], (error) => {
+    database.query (insertCommand, [user.name, user.email, user.password], (error) => {
         if (error) {
             console.log (error)
             return
         }
+        console.log (user)
     })
 
     response.status(201).json({message: "Usuario cadastrado com sucesso!"})
