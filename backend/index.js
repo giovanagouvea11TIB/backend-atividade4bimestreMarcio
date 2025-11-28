@@ -75,9 +75,11 @@ app.post("/cadastrar", (request, response) => {
     })
 
 
-app.listen(port, ()=> {
-    console.log (`Server running on port ${port}!`)
-})
+//app.listen(port, ()=> {
+    //console.log (`Server running on port ${port}!`)
+//})
+
+export default app;
 
 const database = mysql2.createPool({
     host: DB_HOST,
