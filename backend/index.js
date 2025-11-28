@@ -37,7 +37,7 @@ app.post ("/login", (request, response)=> {
         }
 
         //se o usuario não existir  ou se a senha estiver incorreta 
-        if(user.length === 0 || user[0].password !== password){
+        if(users.length === 0 || user[0].password !== password){
             response.json({message: "Email ou senha incorretos!"})
             return
         }
