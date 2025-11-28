@@ -1,4 +1,4 @@
-import express from "express"
+import express, { response } from "express"
 import cors from "cors"
 import mysql2 from "mysql2"
 
@@ -53,6 +53,12 @@ app.post ("/login", (request, response)=> {
 
         response.json({id: user[0].id, name: user[0].name})
     })
+})
+
+app.post("pontuacao", (request, response) => {
+    //pegar o id e a pontuacao de dentro do request
+    //selecionar o usuario pelo id 
+    //alterar a pontuacao do banco de dados usando a pontuacao que foi recebida do frontend
 })
 
 app.post("/cadastrar", (request, response) => {
