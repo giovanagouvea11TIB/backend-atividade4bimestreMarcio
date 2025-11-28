@@ -46,7 +46,7 @@ app.post ("/login", (request, response)=> {
         }
 
         //se o usuario não existir  ou se a senha estiver incorreta 
-        if(users.length === 0 || user[0].password !== password){
+        if(user.length === 0 || user[0].password !== password){
             response.json({message: "Email ou senha incorretos!"})
             return
         }
@@ -55,7 +55,7 @@ app.post ("/login", (request, response)=> {
     })
 })
 
-app.post("pontuacao", (request, response) => {
+app.post("/pontuacao", (request, response) => {
     //pegar o id e a pontuacao de dentro do request
     //selecionar o usuario pelo id 
     //alterar a pontuacao do banco de dados usando a pontuacao que foi recebida do frontend
