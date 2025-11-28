@@ -20,6 +20,7 @@ app.get("/", (request, response) => {
             console.log (error)
             return
         }
+        //so testando
 
         response.json(users)
     })
