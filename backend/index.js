@@ -20,7 +20,7 @@ const port = 3333
 app.use(cors())
 app.use (express.json())
 
-app.get("/", (request, response) => {
+app.get("/usuarios", (request, response) => {
     const selectCommand = "SELECT name, email FROM giovanagouvea_02mb"
 
     database.query(selectCommand, (error, users) =>{
